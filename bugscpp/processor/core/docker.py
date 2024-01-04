@@ -131,7 +131,7 @@ class Docker:
             try:
                 # SET DEFECTS4CPP_TEST_TAXONOMY to 1 for taxonomy testing
                 if os.environ.get("DEFECTS4CPP_TEST_TAXONOMY", "0") not in ["YES", "1"]:
-                    self.client.images.pull(self._tag)
+                    self.client.images.pull(self._tag, platform='linux/amd64')
                 self._image = _cast_image(self.client.images.get(self._tag))
             except docker.errors.ImageNotFound:
                 message.info(
